@@ -2,7 +2,6 @@ package com.bugboard25.repository;
 
 import com.bugboard25.entity.Etichette;
 import com.bugboard25.entity.Issue;
-import com.bugboard25.entity.Progetti;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,7 +22,7 @@ public interface EtichetteRepository extends JpaRepository<Etichette, Integer> {
     @Query("SELECT e FROM Etichette e WHERE e.id_progetto.id = :progettoId")
     List<Etichette> findByProgettoIdQuery(@Param("progettoId") int progettoId);
 
-    @Query("SELECT ir.etichetta FROM Issue_Etichette ir WHERE ir.issue = :issue")
+    @Query("SELECT ir.etichetta FROM IssueEtichette ir WHERE ir.issue = :issue")
     List<Etichette> findEtichetteByIssue(@Param("issue") Issue issue);
 
     // Il metodo "Integer id(int id);" è stato RIMOSSO perché non è valido
